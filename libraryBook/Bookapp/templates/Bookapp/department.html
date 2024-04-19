@@ -1,0 +1,32 @@
+{% extends 'Bookapp/index.html' %}
+{% block content %}
+<div class="container my-5">
+ <ol class="breadcrumb">
+  <li class="breadcrumb-item font-weight-bold"><a href="{% url 'all_department' %}">Department</a></li>
+  <li class="breadcrumb-item font-weight-bold active">{{Department.name}}</li>
+ </ol>
+</div>
+
+<div class="container">
+   <table class="table table-bordered table-hover">
+     <thead>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Author</th>
+     </thead>
+        {% for book in Department.books.all %}
+           <tr>
+             <td>{{book.name}}</td>
+             <td>{{book.year}}</td>
+             <td>{{book.author}}</td>
+           </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="container my-5">
+  <a href="{% url 'newbook' Department.pk %}" class="btn btn-danger">
+    Add New Book
+  </a>
+</div>
+{% endblock content %}

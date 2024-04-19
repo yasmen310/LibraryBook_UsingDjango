@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'BookApp/bootstrap.min.css' %}"/>
+</head>
+<body>
+      <div class="row" style="background-color: rgb(190, 159, 117);color: rgb(4, 56, 39);padding: 20px;">
+         <div class="col-md-10">
+          welcome
+         </div>
+         <div class="col-md-2">
+          {% if user.is_authenticted %}
+               Dear {{user.username}}
+          {% else %}
+            <a href="{% url 'signup' %}">SignUp</a>
+          {% endif %}
+         </div>
+      </div>
+      {% block content %}
+      {% endblock content %}
+      <footer style="background-color: rgb(150, 98, 30);color: aquamarine;text-align: center;padding: 20px;">
+        GOODBY
+      </footer>
+</body>
+</html>

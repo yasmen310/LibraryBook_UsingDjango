@@ -1,0 +1,20 @@
+{% extends 'Bookapp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-5">
+ <ol class="breadcrumb">
+  <li class="breadcrumb-item font-weight-bold"><a href="{% url 'all_department' %}">Department</a></li>
+  <li class="breadcrumb-item font-weight-bold active">{{Department.name}}</li>
+ </ol>
+</div>
+
+<div class="container my-5">
+  <form action="{% url 'newbook' Department.pk %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add New Book" class="btn btn-danger mb-5">
+  </form>
+</div>
+{% endblock content %}
+<!-- {{ form | crispy }} -->
+  

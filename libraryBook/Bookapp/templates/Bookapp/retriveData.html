@@ -1,0 +1,37 @@
+{% extends 'Bookapp/index.html' %}
+{% block content %}
+<div class="jumbotron text-center">
+   <h1> The largest library is the Middle East</h1>
+   <p> You can find any Book about computing </p>
+</div>
+
+<div class="container">
+  <div class="row">
+    {% for dep in department %}
+       <div class="col-4">
+            <h2><a href="{% url 'department' dep.pk %}">{{dep.code}} {{dep.name}}</a></h2>
+            <hr class="my-4">
+            <h5>{{dep.date}}</h5>
+            <p>{{dep.description}}</p>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- <table  style="border:2px solid black;padding: 5px;margin-bottom: 50px;">
+{% for dep in department %}
+   <tr style="border:2px solid black;padding: 5px;">
+      <td  style="border:2px solid black;padding: 5px;"> {{dep.code}}</td>
+      <td  style="border:2px solid black;padding: 5px;">{{dep.name}}</td>
+      <td  style="border:2px solid black;padding: 5px;">{{dep.description}}</td>   
+      <td  style="border:2px solid black;padding: 5px;">{{dep.date}}</td>
+       <br>
+  </tr>
+{% endfor %}
+</table> -->
+
+<div class="container my-5">
+  <a href="{% url 'newdepartment' %}" class="btn btn-danger">
+    Add New Department
+  </a>
+</div>
+{% endblock content %}
